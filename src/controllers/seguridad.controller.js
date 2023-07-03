@@ -7,7 +7,7 @@ const getSeguridadSing = async (req, res) => {
     const { PV_ACCION } = req.params;
     const connection = await getConnection();
     const result = await connection.query('CALL A_SELECT_MODULO_SEGURIDAD (?) ', PV_ACCION);
-    res.json("Dato Eliminados");
+    res.json(result);
   } catch (error) {
     console.error("Error executing query:", error);
     res.status(500).json({ error: "Internal Server Error" });
