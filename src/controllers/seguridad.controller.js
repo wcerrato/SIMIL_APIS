@@ -1,53 +1,18 @@
 import { getConnection } from "../database/database";
 
 //API PARA SELECCIONAR DATOS DEL MODULO DE SEGURIDAD DEL PROCEDIMIENTO A_SELECT_MODULO_SEGURIDAD
-  const getSeguridadSing = async (req, res) => {
-    try {
-      console.log(req.params);
-      const { PV_ACCION } = req.params;
-      const connection = await getConnection();
-  
-      let query = '';
-      let queryParams = [];
-  
-      if (PV_ACCION === 'roles') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['roles'];
-      } else if (PV_ACCION === 'objetos') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['objetos'];
-      } else if (PV_ACCION === 'permisos') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['permisos'];
-      } else if (PV_ACCION === 'preguntas') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['preguntas'];
-      } else if (PV_ACCION === 'respuestas') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['respuestas'];
-      } else if (PV_ACCION === 'parametros') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['parametros'];
-      } else if (PV_ACCION === 'bitacora') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['bitacora'];
-      } else if (PV_ACCION === 'usuario') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['usuario'];
-      } else if (PV_ACCION === 'contraseñas') {
-        query = 'CALL A_SELECT_MODULO_SEGURIDAD(?)';
-        queryParams = ['contraseñas'];
-      } else {
-        throw new Error('PV_ACCION inválido');
-      }
-  
-      const result = await connection.query(query, queryParams);
-      res.json(result[0]);
-    } catch (error) {
-      console.error("Error executing query:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  };
+const getSeguridadSing = async (req, res) => {
+  try {
+    console.log(req.params);
+    const { PV_ACCION } = req.params;
+    const connection = await getConnection();
+    const result = await connection.query('CALL A_SELECT_MODULO_SEGURIDAD (?) ', PV_ACCION);
+    res.json("Dato Eliminados");
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 
 // API PARA INSERTAR DATOS DEL MODULO DE SEGURIDAD  DEL PROCEDIMIENTO ALMACENADO A_INSERT_MODULO_SEGURIDAD
