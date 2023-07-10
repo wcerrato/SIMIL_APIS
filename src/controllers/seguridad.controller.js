@@ -81,8 +81,9 @@ const addSeguridad = async (req, res) => {
 
   // este es un mensaje de prueba
 
-export const methods = {
-    addSeguridad,
+
+  export const methods = {
     getSeguridadSing,
-    updateSeguridad
+    updateSeguridad,
+    addSeguridad
 };
