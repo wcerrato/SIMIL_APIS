@@ -3,6 +3,7 @@ import { methods as SimilControllers } from "./../controllers/seguridad.controll
 import { methods as facturaControllers } from "./../controllers/factura.controller";
 import { methods as InventarioControllers } from "./../controllers/inventario.controller";
 import { methods as PersonaControllers } from "./../controllers/persona.controller";
+import { methods as ReporteControllers } from "./../controllers/reportes.controller";
 
 // RUTAS PARA MANDAR A LLAMAR LAS APIS DEL ARCHIVO SEGURIDAD.CONTROLLER.JS
 const router = Router();
@@ -11,6 +12,7 @@ router.get('/:PV_ACCION', SimilControllers.getSeguridadSing );
 router.post('/', SimilControllers.addSeguridad );
 router.put('/', SimilControllers.updateSeguridad );
 
+// RUTAS PARA MANDAR A LLAMAR LAS APIS DEL ARCHIVO FACTURA.CONTROLLER.JS
 router.get('/facturas/:PV_ACCION', facturaControllers.getFactura);
 router.post('/facturas/', facturaControllers.addFactura);
 router.put('/facturas/', facturaControllers.updateFactura);
@@ -24,5 +26,8 @@ router.put('/Inventario/', InventarioControllers.updateInventario );
 router.get('/Persona/:PV_ACCION', PersonaControllers.getPersonaSing );
 router.post('/Persona/', PersonaControllers.addPersona );
 router.put('/Persona/', PersonaControllers.updatePersona);
+
+// RUTAS PARA MANDAR A LLAMAR LAS APIS DEL ARCHIVO REPORTES.CONTROLLER.JS
+router.get('/reportes/:PV_ACCION', ReporteControllers.getReportes);
 export default router;
 
