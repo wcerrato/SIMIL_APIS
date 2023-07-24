@@ -5,6 +5,7 @@ import { methods as InventarioControllers } from "./../controllers/inventario.co
 import { methods as PersonaControllers } from "./../controllers/persona.controller";
 import { methods as ReporteControllers } from "./../controllers/reportes.controller";
 import { methods as comprascontrollers } from "../controllers/compras.controller";
+import { methods as logincontrollers } from "../controllers/login.controller";
 
 // RUTAS PARA MANDAR A LLAMAR LAS APIS DEL ARCHIVO SEGURIDAD.CONTROLLER.JS
 const router = Router();
@@ -36,5 +37,10 @@ router.put('/compras/', comprascontrollers.updatecompras);
 
 // RUTAS PARA MANDAR A LLAMAR LAS APIS DEL ARCHIVO REPORTES.CONTROLLER.JS
 router.get('/reportes/:PV_ACCION', ReporteControllers.getReportes);
+
+//RUTA PARA TOKEN 
+router.get('/', logincontrollers.getLogin);
+
+
 export default router;
 
